@@ -12,6 +12,8 @@
 
 Pages Router만 있다가 2023년에 App Router가 도입되었다.
 
+> 💡 우선순위: App Router > Page Router
+
 ### App Router 도입 이유
 
 - Pages Router의 문제를 기존 구조에서 해결하기 어려워 App Router 도입
