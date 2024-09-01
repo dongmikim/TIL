@@ -274,14 +274,14 @@ React query로 API 통신을 한다면 컴포넌트 간 상태 공유는 Context
 
 ### 7.3 refetch, invalidate, reset의 차이
 
-**refetch**
+**refetch**  
 데이터를 새로 가져와서 최신화한다.
 
-**invalidate**
+**invalidate**  
 refetch와 유사하지만 특정 쿼리를 더 이상 쓰지 말라는 액션이다.
 inactive 상태일 때는 데이터를 새로 가져오지 않는다. 그렇지만 `Observers`가 1이일 경우에는 서버에 데이터를 새로 요청한다.
 
-**reset**
+**reset**  
 초기 데이터로 리셋된다. 처음에 설정된 초기 데이터가 없다면 데이터를 새로 가져온다.
 
 ```ts
