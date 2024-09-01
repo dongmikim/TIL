@@ -356,22 +356,15 @@ const { data } = useQuery<IPost[]>({
 })
 
 // After
-const {
-  data,
-  fetchNextPage,
-  hasNextPage,
-  isFetching,
-  isPending,
-  isLoading, // isPending && isFetching
-  isError,
-} = useInfiniteQuery<IPost[], Object, InfiniteData<IPost[]>, [_1: string, _2: string], number>({
-  queryKey: ['posts', 'recommends'],
-  queryFn: getPostRecommends,
-  initialPageParam: 0, // 1,2,3,4,5 postId 불러옴 (다음 커서는 5)
-  getNextPageParam: lastPage => lastPage.at(-1)?.postId,
-  staleTime: 60 * 1000, // fresh -> stale, 5분이라는 기준
-  gcTime: 300 * 1000,
-})
+const { data, fetchNextPage, hasNextPage, isFetching, isPending, isLoading, isError } =
+  useInfiniteQuery<IPost[], Object, InfiniteData<IPost[]>, [_1: string, _2: string], number>({
+    queryKey: ['posts', 'recommends'],
+    queryFn: getPostRecommends,
+    initialPageParam: 0, // 1,2,3,4,5 postId 불러옴 (다음 커서는 5)
+    getNextPageParam: lastPage => lastPage.at(-1)?.postId,
+    staleTime: 60 * 1000,
+    gcTime: 300 * 1000,
+  })
 ```
 
 ## 14. react-intersection-observer로 불러오기
@@ -402,8 +395,8 @@ const { data, fetchNextPage, hasNextPage, isFetching } = useInfiniteQuery<
   queryKey: ['posts', 'recommends'],
   queryFn: getPostRecommends,
   initialPageParam: 0,
-  getNextPageParam: lastPage => lastPage.at(-1)?.postId, // lastPage: 가장 최근에 불러왔던 페이지들
-  staleTime: 60 * 1000, // fresh -> stale로 변환되는 시간(ms)
+  getNextPageParam: lastPage => lastPage.at(-1)?.postId,
+  staleTime: 60 * 1000,
   gcTime: 300 * 1000,
 })
 
@@ -414,8 +407,6 @@ const { ref, inView } = useInView({
 
 useEffect(() => {
   if (inView) {
-    // 현재 데이터를 가져오고 있지 않고, 다음 페이지가 있다면
-    // 다음 페이지를 패칭해
     !isFetching && hasNextPage && fetchNextPage()
   }
 }, [inView, !isFetching, fetchNextPage, hasNextPage])
