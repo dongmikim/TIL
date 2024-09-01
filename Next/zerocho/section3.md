@@ -243,8 +243,6 @@ async function getPostRecommends() {
 }
 ```
 
-- revalidateTag(’key’), revalidatePath(’Path’)를 사용해서 fetch의 캐싱을 무효화 처리 해줄 수 있다?
-
 ## 7. React Query 사용 이유와 상태값
 
 ### 7.1 React Query를 왜 쓰나요?
